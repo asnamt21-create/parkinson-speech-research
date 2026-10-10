@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Parkinson's Speech Detection | MSc Research</title>
+<style>
+:root{--bg:#0b1020;--panel:#131c30;--border:#293750;--text:#eef4ff;--muted:#aab8cf;--accent:#7c83ff;--cyan:#58d5e8}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.7 Arial,sans-serif}
+header{padding:18px 7%;display:flex;justify-content:space-between;align-items:center;gap:18px;border-bottom:1px solid var(--border)}
+.brand{font-weight:bold;font-size:18px}
+nav{display:flex;gap:18px;flex-wrap:wrap}
+a{color:var(--cyan);text-decoration:none}
+nav a{color:var(--muted);font-size:14px}
+main{max-width:1120px;margin:auto;padding:38px 22px}
+.hero{padding:45px 0 35px}
+.tag{display:inline-block;color:var(--cyan);border:1px solid var(--border);border-radius:30px;padding:5px 12px;font-size:13px}
+h1{font-size:clamp(34px,6vw,58px);line-height:1.1;letter-spacing:-1.5px;margin:20px 0}
+h2{font-size:27px;margin:0 0 10px}
+h3{margin-top:0}
+p{color:var(--muted)}
+.hero p{max-width:780px;font-size:18px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0}
+.grid.two{grid-template-columns:repeat(2,1fr)}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:17px;padding:23px}
+.metric{font-size:31px;font-weight:bold;color:var(--cyan)}
+section{margin:42px 0;scroll-margin-top:20px}
+.pipeline{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.pipeline span{background:#202b46;border:1px solid var(--border);border-radius:10px;padding:12px;font-size:14px}
+table{border-collapse:collapse;width:100%;font-size:14px;margin-top:15px}
+th,td{text-align:left;padding:12px 9px;border-bottom:1px solid var(--border)}
+th{color:var(--cyan)}
+.notice{border-left:4px solid var(--accent);background:#171d38;padding:16px;border-radius:8px;color:var(--muted)}
+.warning{border-left:4px solid #e8b45d}
+footer{text-align:center;padding:30px 20px;border-top:1px solid var(--border);color:var(--muted);font-size:13px}
+@media(max-width:700px){header{align-items:flex-start;flex-direction:column}.grid,.grid.two{grid-template-columns:1fr}main{padding:24px 16px}.card{padding:18px}nav{gap:12px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">🧠 Parkinson's Speech Research</div>
+  <nav>
+    <a href="#overview">Overview</a>
+    <a href="#method">Methodology</a>
+    <a href="#results">Results</a>
+    <a href="#limitations">Limitations</a>
+  </nav>
+</header>
+
+<main>
+  <div class="hero">
+    <span class="tag">MSc Applied Data Science · Research Project</span>
+    <h1>Speech-Based Parkinson's Disease Detection</h1>
+    <p>A comparative study of traditional acoustic features and pretrained Wav2Vec 2.0 speech representations using speaker-independent evaluation and cross-corpus testing.</p>
+    <div class="pipeline">
+      <span>🎙️ Speech processing</span>
+      <span>🤖 Machine learning</span>
+      <span>🧠 Deep learning</span>
+      <span>📊 Model evaluation</span>
+    </div>
+  </div>
+
+  <section id="overview">
+    <h2>Research Overview</h2>
+    <p>This project investigates whether speech recordings contain patterns that help distinguish Parkinson's disease (PD) recordings from healthy-control recordings. It compares handcrafted acoustic features with representations extracted from a pretrained speech model.</p>
+    <div class="grid">
+      <div class="card">
+        <h3>Primary dataset</h3>
+        <div class="metric">49</div>
+        <p>IPVS B1 recordings from 46 speakers: 28 PD recordings and 21 elderly healthy-control recordings.</p>
+      </div>
+      <div class="card">
+        <h3>External dataset</h3>
+        <div class="metric">37</div>
+        <p>MDVR-KCL ReadText recordings from 37 speakers: 16 PD and 21 healthy controls.</p>
+      </div>
+      <div class="card">
+        <h3>Research objective</h3>
+        <div class="metric">2 models</div>
+        <p>Compare classical acoustic machine learning with a Wav2Vec 2.0 and BiLSTM classifier.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="method">
+    <h2>Methodology</h2>
+    <p>The primary evaluation uses fixed, speaker-independent five-fold cross-validation. The separate MDVR-KCL corpus is used for external cross-corpus evaluation.</p>
+    <div class="card">
+      <h3>Deep-learning pipeline</h3>
+      <div class="pipeline">
+        <span>1. Audio recordings</span>
+        <span>2. Mono, 16 kHz preprocessing</span>
+        <span>3. Five-second chunks</span>
+        <span>4. Frozen Wav2Vec 2.0</span>
+        <span>5. 768-dimensional embeddings</span>
+        <span>6. BiLSTM classifier</span>
+        <span>7. PD / healthy-control classification</span>
+      </div>
+    </div>
+    <div class="grid two">
+      <div class="card">
+        <h3>Classical baseline</h3>
+        <p>171 acoustic predictors, including MFCC, delta and delta-delta summaries, fundamental frequency, jitter and shimmer. Multiple classical classifiers and feature strategies were evaluated.</p>
+      </div>
+      <div class="card">
+        <h3>Deep-learning model</h3>
+        <p>Frozen facebook/wav2vec2-base embeddings are mean-pooled per audio chunk and passed to a one-layer bidirectional LSTM classifier.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="results">
+    <h2>Final Research Results</h2>
+    <p>Internal results below are five-fold means ± standard deviations. External results come from the separate MDVR-KCL corpus.</p>
+    <div class="card">
+      <h3>Internal evaluation — IPVS B1</h3>
+      <table>
+        <thead><tr><th>Metric</th><th>Classical baseline</th><th>Wav2Vec 2.0 + BiLSTM</th></tr></thead>
+        <tbody>
+          <tr><td>Balanced accuracy</td><td>95.50% ± 6.22%</td><td>94.33% ± 5.22%</td></tr>
+          <tr><td>Sensitivity</td><td>96.00% ± 8.94%</td><td>92.67% ± 10.11%</td></tr>
+          <tr><td>Specificity</td><td>95.00% ± 11.18%</td><td>96.00% ± 8.94%</td></tr>
+          <tr><td>ROC-AUC</td><td>95.00% ± 8.66%</td><td>97.00% ± 6.71%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h3>External evaluation — MDVR-KCL</h3>
+      <table>
+        <thead><tr><th>Metric</th><th>Classical baseline</th><th>Wav2Vec 2.0 + BiLSTM</th></tr></thead>
+        <tbody>
+          <tr><td>Balanced accuracy</td><td>50.15%</td><td>47.17%</td></tr>
+          <tr><td>Sensitivity</td><td>81.25%</td><td>56.25%</td></tr>
+          <tr><td>Specificity</td><td>19.05%</td><td>38.10%</td></tr>
+          <tr><td>ROC-AUC</td><td>59.82%</td><td>45.83%</td></tr>
+          <tr><td>Accuracy</td><td>45.95%</td><td>45.95%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="notice" style="margin-top:16px">
+      <strong>Interpretation:</strong> Both approaches show high internal performance on IPVS but substantially weaker performance on the external corpus. This highlights a cross-corpus generalisation challenge; the study cannot isolate the effects of language, recording conditions, task or speaker population.
+    </div>
+  </section>
+
+  <section id="limitations">
+    <h2>Limitations and Responsible Use</h2>
+    <div class="card">
+      <p>The primary cohort is small, and performance on one corpus does not guarantee performance on other populations or recording environments. External balanced accuracy and ROC-AUC do not provide clear evidence of discrimination beyond the conventional 0.50 reference in this sample.</p>
+      <p>These models are research classifiers, not validated clinical diagnostic tools. Results must not be used to diagnose Parkinson's disease or replace assessment by qualified healthcare professionals.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Project Summary</h2>
+    <p>This study demonstrates an end-to-end speech classification workflow covering audio preprocessing, acoustic feature extraction, pretrained speech representations, speaker-independent model evaluation, external validation and uncertainty analysis.</p>
+    <div class="notice">The website presents research findings only. It does not upload audio to a model or provide live medical predictions.</div>
+  </section>
+</main>
+
+<footer>
+  MSc research demonstration · Speech-based Parkinson's disease detection<br>
+  For educational and research purposes only · Not a clinical diagnostic tool
+</footer>
+</body>
+</html>
