@@ -43,6 +43,7 @@ footer{text-align:center;padding:30px 20px;border-top:1px solid var(--border);co
 <header>
   <div class="brand">🧠 Parkinson's Speech Research</div>
   <nav>
+    <a href="#demo" style="color:var(--cyan); font-weight:600;">🚀 Live Demo</a>
     <a href="#overview">Overview</a>
     <a href="#method">Methodology</a>
     <a href="#results">Results</a>
@@ -62,6 +63,24 @@ footer{text-align:center;padding:30px 20px;border-top:1px solid var(--border);co
       <span>📊 Model evaluation</span>
     </div>
   </div>
+
+  <!-- Live Demo Card -->
+  <section id="demo" style="background: linear-gradient(135deg, rgba(88,213,232,0.08) 0%, rgba(124,131,255,0.14) 100%); border: 1px solid var(--accent); border-radius: 18px; padding: 28px; margin: 28px 0;">
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
+      <div style="max-width:680px;">
+        <span class="tag" style="background:rgba(124,131,255,0.25); border-color:var(--accent); color:#eef4ff;">⚡ Live Cloud Demonstration</span>
+        <h2 style="margin: 12px 0 6px; font-size:26px;">Test the Trained Model with Audio</h2>
+        <p style="margin:0; color:var(--muted); font-size:15px; line-height:1.6;">
+          Upload a WAV/MP3 recording or record speech via microphone. The audio is preprocessed to 16 kHz mono, split into 5-second acoustic chunks, embedded via the frozen <strong>facebook/wav2vec2-base</strong> model, and classified using our trained <strong>BiLSTM</strong> checkpoint.
+        </p>
+      </div>
+      <div>
+        <a id="demoBtn" href="https://asnamt21-create-parkinson-speech-research.streamlit.app" target="_blank" style="display:inline-flex; align-items:center; gap:8px; background:linear-gradient(135deg, var(--accent), var(--cyan)); color:#0b1020; font-weight:700; padding:14px 26px; border-radius:12px; font-size:15px; text-decoration:none; box-shadow:0 6px 22px rgba(88,213,232,0.25);">
+          🚀 Launch Interactive Demo ↗
+        </a>
+      </div>
+    </div>
+  </section>
 
   <section id="overview">
     <h2>Research Overview</h2>
@@ -156,7 +175,7 @@ footer{text-align:center;padding:30px 20px;border-top:1px solid var(--border);co
   <section>
     <h2>Project Summary</h2>
     <p>This study demonstrates an end-to-end speech classification workflow covering audio preprocessing, acoustic feature extraction, pretrained speech representations, speaker-independent model evaluation, external validation and uncertainty analysis.</p>
-    <div class="notice">The website presents research findings only. It does not upload audio to a model or provide live medical predictions.</div>
+    <div class="notice">This demonstration presents MSc research findings and an interactive speech analysis interface for academic evaluation. Predictions are strictly non-clinical and must not be used for diagnostic purposes.</div>
   </section>
 </main>
 

@@ -1,0 +1,36 @@
+{
+  "checkpoint_file": "stage5_v2_final_bilstm.pt",
+  "model_architecture": {
+    "input_dim": 768,
+    "hidden_dim": 128,
+    "num_layers": 1,
+    "dropout": 0.3,
+    "num_classes": 2,
+    "pooling": "mean"
+  },
+  "training_hyperparams": {
+    "optimizer": "Adam",
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "batch_size": 4,
+    "loss": "CrossEntropyLoss_class_weighted",
+    "num_epochs": 30,
+    "seed": 42
+  },
+  "model_name": "facebook/wav2vec2-base",
+  "extraction_version": "v2",
+  "predetermined_epoch": 30,
+  "seed": 42,
+  "training_cohort": "Italian PVS Task B1 (N=49, 46 speakers)",
+  "script": "scripts/07_export_final_bilstm_checkpoint.py",
+  "n_training_recordings": 49,
+  "n_training_speakers": 46,
+  "training_class_counts": {
+    "PD": 28,
+    "EHC": 21
+  },
+  "final_train_loss": 0.0003965531650464982,
+  "final_train_bacc": 1.0,
+  "cache_dir": "C:\\Users\\asnam\\New folder\\Parkinson_Speech_Project\\results\\stage5_cache_v2",
+  "manifest": "italian_pvs_b1_folds.csv"
+}
